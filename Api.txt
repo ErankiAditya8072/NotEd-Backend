@@ -1,0 +1,89 @@
+sign up - 
+
+URL : localhost:8080/auth/signup
+METHOD: PUT
+FIELDS :  email, password, userName,
+RESPONSES : 
+   successful ( 201)  :   fields returned  : [ message , userId , statusCode ] 
+   Failed   ( 422)   : fields returned  : [ message, data , statusCode ] 
+
+login
+
+URL : localhost:8080/auth/login
+METHOD : POST
+FIELDS : email , password
+RESPONSES : 
+   successful ( 200 ) : fields returned : [ token, userId , statusCode ] ,
+   Failed ( 401 )     : fields returned : [ message, data, statusCode ]	
+
+already logged in 
+
+URL : localhost:8080/auth/loggedin
+METHOD : POST
+Fields ( to be sent in header as Authorization ) : token
+RESPONSES : 
+    successful(200)  : fields returned : [ authenticated , reason , statusCode],
+    failed(401, 422) :  fields returned  : [ authenticated, reason , statusCode]
+
+
+new / forgot password
+
+URL : Localhost:8080/auth/password-reset
+METHOD : POST
+Fields :  email, password
+RESPONSES : 
+    succcessful(200) : fields returned : [ message, userId, statusCode ] 
+    failed(401)      : fields returned : [ message, data, statusCode]
+
+
+
+add folders/branches
+
+URL : localhost:8080/branch/add-new
+METHOD : POST
+fields :  path ( ex -  "os" -> "os/segment")
+RESPONSES : 
+        success : 	  return res.status(200).json({
+     					 branchId : branchResult._id,
+     					 branchName : branchResult.branchName
+    			 });
+
+        Failed   :        res.status(200).json({
+        			message : message,
+       				 data : data,
+       			 	statusCode : 500 
+   			 })
+
+
+get all branches and pages
+
+URL : localhost:8080/branch/branchNames
+METHOD : GET
+fields : none
+RESPONSES : 
+        success :  res.status(200).json({
+        		branches: finalTree
+    		   });
+        failed :   res.status(200).json({
+        			message : message,
+       				 data : data,
+       			 	statusCode : 500 
+   		   })
+
+add new page 
+
+URL : localhost:8080/page/add-page
+METHOD : POST
+fields :  { branchId , pageName }
+RESPONSES : 
+           
+    success :    res.status(200).json({
+    		     pageId : pageResult._id,
+         	     branchPages : finalBranchResult.pages
+      		 })
+    failed :     res.status(200).json({
+        			message : message,
+       				 data : data,
+       			 	statusCode : 500 
+   		   })
+
