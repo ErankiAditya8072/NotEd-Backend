@@ -8,14 +8,8 @@ const pageSchema = new Schema ( {
         required : true
     },
 
-    question : {
-        type: String,
-        
-    },
-
-    answer : {
-        type : String,
-        
+    pageData : {
+        type : String
     },
 
     branchId : {

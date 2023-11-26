@@ -37,7 +37,9 @@ exports.addPage = async ( req, res, next) => {
 
        res.status(200).json({
          pageId : pageResult._id,
-         branchPages : finalBranchResult.pages
+         pageName : pageResult.pageName,
+         branchId : finalBranch._id,
+         branchName : finalBranch.branchName
        })
 
     }catch (err) {
@@ -46,4 +48,50 @@ exports.addPage = async ( req, res, next) => {
         }
         next(err);
     }
+}
+
+exports.addPageData = async ( req, res, next) => {
+  try{
+    const pageId = req.body.pageId;
+    const dataFile = req.body.dataFile
+
+    const page  = await Page.findById(pageId)
+    page.pageData = dataFile;
+
+    const pageResult = await page.save();
+
+    res.status(200).json({
+      pageId : pageResult._id,
+      pageData : pageResult.pageData,
+    })
+    
+
+  }catch(err) {
+    if(!err.statusCode){
+      err.statusCode  = 500
+    }
+    next(err);
+  }
+
+}
+
+
+exports.getPageData = async( req, res, next) => {
+
+  try{
+    const pageId  = req.body.pageId;
+
+    const page = await Page.findById(pageId);
+
+    res.status(200).json({
+      pageId : page._id,
+      pageData : page.pageData
+    })
+  }catch( err) {
+    if(!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+
 }
