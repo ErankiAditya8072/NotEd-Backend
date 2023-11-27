@@ -31,7 +31,8 @@ exports.signup = async( req, res, next) => {
 
     const email = req.body.email;
     const password = req.body.password;
-    const userName = req.body.userName;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
 
     try {
         const hashedPassword = await bcrypt.hash(password, 12);
@@ -39,7 +40,8 @@ exports.signup = async( req, res, next) => {
         const user = new User({
             email : email,
             password : hashedPassword,
-            userName : userName
+            firstName : firstName,
+            lastName : lastName
         });
 
         const userResult = await user.save();
@@ -110,6 +112,9 @@ exports.login = async( req, res, next) => {
             {
                 token : token,
                 userId: loadedUser._id.toString(),
+                email : loadedUser.email,
+                firstName : loadedUser.firstName,
+                lastName : loadedUser.lastName,
                 statusCode : 200
             }
         );

@@ -25,7 +25,8 @@ router.post('/signup', [
     })
     .normalizeEmail(),
     body('password').trim().isLength({min : 5}),
-    body('userName').trim().isLength({ min : 5})
+    body('firstName').trim().isLength({ min : 3}),
+    body('lastName').trim().isLength({ min : 2})
 ], authController.signup)
 
 router.get('/loggedin', isAlreadyAuth, authController.loggedIn)
