@@ -16,6 +16,12 @@ router.post('/add-page',isAuth, pageController.addPage )
 
 router.post('/add-page-data',isAuth, pageController.addPageData)
 
+router.put('/update-page-data', isAuth, pageController.addPageData);
+
 router.get('/get-page-data', isAuth, pageController.getPageData);
+
+router.delete('/delete-page', isAuth, pageController.deletePage);
+
+router.put('/page-rename', isAuth, pageController.pageRename);
 
 module.exports = router;

@@ -28,7 +28,12 @@ const branchSchema = new Schema({
             ref : 'page',
             required : true 
         }
-    ]
+    ],
+
+    parentBranchId : {
+        type : Schema.Types.ObjectId,
+        ref : 'branch'
+    }
 })
 
 module.exports = mongoose.model('branch',branchSchema)
