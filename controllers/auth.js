@@ -57,6 +57,7 @@ exports.signup = async( req, res, next) => {
         if(!err.statusCode) 
         {
             err.statusCode = 500;
+            err.message = "error while creating user"
         }
         next(err);
     }
@@ -106,6 +107,7 @@ exports.login = async( req, res, next) => {
             userId : loadedUser._id.toString()
             },
             "DawinderAditya",
+            { expiresIn : '24h'}
         )
 
         res.status(200).json(
