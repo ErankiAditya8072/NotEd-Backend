@@ -35,7 +35,8 @@ exports.addBranch = async (req, res, next) => {
       const userResult = await user.save();
       return res.status(200).json({
          branchId : branchResult._id,
-         branchName : branchResult.branchName
+         branchName : branchResult.branchName,
+         statusCode:200
       });
     }
   
