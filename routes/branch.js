@@ -15,7 +15,7 @@ router.post('/add-new',isAuth, branchController.addBranch )
 
 router.get('/branchNames', isAuth, branchController.getAllBranches);
 
-router.delete('/delete-branch',isAuth, branchController.deleteBranch);
+router.delete('/delete-branch/:branchId',isAuth, branchController.deleteBranch);
 
 router.put('/branch-rename', isAuth, branchController.branchRename);
 

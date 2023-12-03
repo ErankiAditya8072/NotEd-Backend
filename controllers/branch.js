@@ -217,7 +217,7 @@ const deleteAllBranches = async(child) => {
 exports.deleteBranch = async ( req, res, next) => {
 
    try{
-    const branchId = req.body.branchId;
+    const branchId = req.params.branchId;
 
     const branch = await Branch.findById(branchId).populate('childs').populate('pages');
 

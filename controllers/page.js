@@ -137,7 +137,7 @@ exports.pageRename = async(req, res, next) => {
 exports.deletePage = async ( req, res, next) => {
 
   try {
-    const pageId = req.body.pageId;
+    const pageId = req.params.pageId;
 
     const page = await Page.findById(pageId);
  

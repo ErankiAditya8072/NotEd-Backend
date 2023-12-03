@@ -20,7 +20,7 @@ router.put('/update-page-data', isAuth, pageController.addPageData);
 
 router.get('/get-page-data', isAuth, pageController.getPageData);
 
-router.delete('/delete-page', isAuth, pageController.deletePage);
+router.delete('/delete-page/:pageId', isAuth, pageController.deletePage);
 
 router.put('/page-rename', isAuth, pageController.pageRename);
 
