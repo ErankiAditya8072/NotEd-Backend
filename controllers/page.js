@@ -42,7 +42,8 @@ exports.addPage = async ( req, res, next) => {
          pageId : pageResult._id,
          pageName : pageResult.pageName,
          branchId : finalBranch._id,
-         branchName : finalBranch.branchName
+         branchName : finalBranch.branchName,
+         statusCode : 200
        })
 
     }catch (err) {
@@ -67,6 +68,7 @@ exports.addPageData = async ( req, res, next) => {
     res.status(200).json({
       pageId : pageResult._id,
       pageData : pageResult.pageData,
+      statusCode : 200
     })
     
 
@@ -89,7 +91,8 @@ exports.getPageData = async( req, res, next) => {
 
     res.status(200).json({
       pageId : page._id,
-      pageData : page.pageData
+      pageData : page.pageData,
+      statusCode : 200
     })
   }catch( err) {
     if(!err.statusCode) {
@@ -116,6 +119,7 @@ exports.pageRename = async(req, res, next) => {
     res.status(200).json({
       pageId : pageResult._id,
       pageData : pageResult.pageData,
+      statusCode : 200
     })
     
 
@@ -145,7 +149,8 @@ exports.deletePage = async ( req, res, next) => {
  
     res.status(200).json({
            message : "page delete successfully",
-           branchdata : finalBranchData
+           branchdata : finalBranchData,
+           statusCode : 200
     })
  
     

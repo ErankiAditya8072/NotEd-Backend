@@ -78,7 +78,7 @@ exports.addBranch = async (req, res, next) => {
     if( found === false) {
       return res.status(200).json({
          message : " branchName does not exists",
-         statusCode : "401"
+         statusCode : 401
       })
     }
 
@@ -106,7 +106,8 @@ exports.addBranch = async (req, res, next) => {
 
     return res.status(200).json({
       branchId : branchResult._id,
-      branchName : branchResult.branchName
+      branchName : branchResult.branchName,
+      statusCode : 200
 
     });
   } catch (err) {
@@ -158,7 +159,8 @@ exports.getAllBranches = async (req, res, next) => {
 
    
     res.status(200).json({
-        branches: finalTree
+        branches: finalTree,
+        statusCode : 200
     });
 
   } catch (err) {
@@ -187,7 +189,8 @@ exports.branchRename = async ( req, res, next) => {
 
     res.status(200).json({
       branchId : branchResult._id,
-      branchName : branchResult.branchName
+      branchName : branchResult.branchName,
+      statusCode : 200
     })
     
   }catch(err) {
@@ -241,7 +244,8 @@ exports.deleteBranch = async ( req, res, next) => {
 
     res.status(200).json({
       message : " successfully deletedBranches",
-      deletedBranch : deletedBranch
+      deletedBranch : deletedBranch,
+      statusCode : 200
     })
 
    }catch(err){
