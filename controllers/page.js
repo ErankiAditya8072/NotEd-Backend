@@ -85,13 +85,13 @@ exports.addPageData = async ( req, res, next) => {
 exports.getPageData = async( req, res, next) => {
 
   try{
-    const pageId  = req.body.pageId;
+    const pageId  = req.params.pageId;
 
     const page = await Page.findById(pageId);
 
     res.status(200).json({
       pageId : page._id,
-      pageData : page.pageData,
+      pageData : page.pageData ? page.pageData : undefined,
       statusCode : 200
     })
   }catch( err) {

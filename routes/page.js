@@ -18,7 +18,7 @@ router.post('/add-page-data',isAuth, pageController.addPageData)
 
 router.put('/update-page-data', isAuth, pageController.addPageData);
 
-router.get('/get-page-data', isAuth, pageController.getPageData);
+router.get('/get-page-data/:pageId', isAuth, pageController.getPageData);
 
 router.delete('/delete-page/:pageId', isAuth, pageController.deletePage);
 
